@@ -76,6 +76,16 @@ public class RNReceivedMessageHandler {
             }
         }
 
+        if (notificationData.containsKey("sendbird")) {
+            String[] payload = notificationData.get("message").split(":");
+            if (!bundle.containsKey("message")) {
+                bundle.putString("message", payload[1]);
+            }
+            if (!bundle.containsKey("title")) {
+                bundle.putString("title", payload[0]);
+            }
+        }
+
         Bundle dataBundle = new Bundle();
         for(Map.Entry<String, String> entry : notificationData.entrySet()) {
             dataBundle.putString(entry.getKey(), entry.getValue());
