@@ -77,12 +77,22 @@ public class RNReceivedMessageHandler {
         }
 
         if (notificationData.containsKey("sendbird")) {
-            String[] payload = notificationData.get("message").split(":");
-            if (!bundle.containsKey("message")) {
-                bundle.putString("message", payload[1]);
+            if (notificationData.containsKey("message") && notificationData.get("message").split(":") >= 2) {
+                String[] payload = notificationData.get("message").split(":");
+                if (!bundle.containsKey("message")) {
+                    bundle.putString("message", payload[1]);
+                }
+                if (!bundle.containsKey("title")) {
+                    bundle.putString("title", payload[0]);
+                }
             }
-            if (!bundle.containsKey("title")) {
-                bundle.putString("title", payload[0]);
+            else {
+                if (!bundle.containsKey("message")) {
+                    bundle.putString("message", "Image/Document Shared");
+                }
+                if (!bundle.containsKey("title")) {
+                    bundle.putString("title", "Docon");
+                }
             }
         }
 
