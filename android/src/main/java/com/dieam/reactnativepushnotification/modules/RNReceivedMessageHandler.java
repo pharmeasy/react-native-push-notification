@@ -77,7 +77,7 @@ public class RNReceivedMessageHandler {
         }
 
         if (notificationData.containsKey("sendbird")) {
-            if (notificationData.containsKey("message") && notificationData.get("message").split(":") >= 2) {
+            if (notificationData.containsKey("message") && notificationData.get("message").split(":").length >= 2) {
                 String[] payload = notificationData.get("message").split(":");
                 if (!bundle.containsKey("message")) {
                     bundle.putString("message", payload[1]);
