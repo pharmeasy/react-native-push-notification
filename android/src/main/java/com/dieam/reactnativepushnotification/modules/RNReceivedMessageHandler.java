@@ -87,12 +87,12 @@ public class RNReceivedMessageHandler {
                 }
             }
             else {
-                String message = notificationData.get("message");
-                if (message == null) {
-                    message = "Image/Document Shared";
+                String mes = notificationData.get("message");
+                if (mes == null) {
+                    mes = "Image/Document Shared";
                 }
                 if (!bundle.containsKey("message")) {
-                    bundle.putString("message", message);
+                    bundle.putString("message", mes);
                 }
                 if (!bundle.containsKey("title")) {
                     bundle.putString("title", "Docon");
