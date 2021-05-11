@@ -974,7 +974,27 @@ public class RNPushNotificationHelper {
 
         return checkOrCreateChannel(manager, channelId, channelName, channelDescription, soundUri, importance, vibratePattern);
     }
-    
+
+    public boolean createVCChannel() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
+            return false;
+
+        String channelId = "vc_incoming_channel";
+        String channelName = "VC Call Channel";
+        String channelDescription = "Channel for VC Call";
+        String soundName = "ringtone";
+        int importance = 4;
+        boolean vibrate = true;
+        long[] vibratePattern = vibrate ? new long[] { DEFAULT_VIBRATION } : null;
+
+        NotificationManager manager = notificationManager();
+
+        Uri soundUri = getSoundUri(soundName);
+
+        return checkOrCreateChannel(manager, channelId, channelName, channelDescription, soundUri, importance, vibratePattern);
+    }
+
+
     public boolean isApplicationInForeground() {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<RunningAppProcessInfo> processInfos = activityManager.getRunningAppProcesses();

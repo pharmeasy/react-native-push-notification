@@ -59,6 +59,7 @@ public class RNPushNotification extends ReactContextBaseJavaModule implements Ac
         mJsDelivery = new RNPushNotificationJsDelivery(reactContext);
 
         mRNPushNotificationHelper.checkOrCreateDefaultChannel();
+        mRNPushNotificationHelper.createVCChannel();
     }
 
 
