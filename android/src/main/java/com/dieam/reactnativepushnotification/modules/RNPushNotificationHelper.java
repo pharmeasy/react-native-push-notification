@@ -316,6 +316,18 @@ public class RNPushNotificationHelper {
                     .setPriority(priority)
                     .setAutoCancel(bundle.getBoolean("autoCancel", true))
                     .setOnlyAlertOnce(bundle.getBoolean("onlyAlertOnce", false));
+
+            // Fetch the ongoing key from the data bundle
+            Bundle dataBundle = bundle.getBundle("data");
+            Log.d(LOG_TAG, "Data Bundle is " + dataBundle);
+            if(dataBundle != null){
+                boolean isStickyNotification = dataBundle.getString("ongoing", "false").equalsIgnoreCase("true");
+                Log.d(LOG_TAG, "Is Ongoing Push Notification " + isStickyNotification);
+                if(isStickyNotification){
+                    notification.setOngoing(true);
+                    notification.setTimeoutAfter(10*60*1000);
+                }
+            }
             
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { // API 24 and higher
                 // Restore showing timestamp on Android 7+
