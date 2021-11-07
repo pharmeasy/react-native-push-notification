@@ -100,6 +100,11 @@ public class RNReceivedMessageHandler {
             }
         }
 
+        if(notificationData.containsKey("ongoingDocon")) {
+            bundle.putString("message", data.optString("body", null));
+            bundle.putString("title", data.optString("title", null));
+        }
+
         Bundle dataBundle = new Bundle();
         for(Map.Entry<String, String> entry : notificationData.entrySet()) {
             dataBundle.putString(entry.getKey(), entry.getValue());

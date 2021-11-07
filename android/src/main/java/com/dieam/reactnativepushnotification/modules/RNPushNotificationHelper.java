@@ -319,10 +319,10 @@ public class RNPushNotificationHelper {
 
             // Fetch the ongoing key from the data bundle
             Bundle dataBundle = bundle.getBundle("data");
-            Log.d(LOG_TAG, "Data Bundle is " + dataBundle);
+            Log.v(LOG_TAG, "Data Bundle is " + dataBundle);
             if(dataBundle != null){
                 boolean isStickyNotification = dataBundle.getString("ongoing", "false").equalsIgnoreCase("true");
-                Log.d(LOG_TAG, "Is Ongoing Push Notification " + isStickyNotification);
+                Log.v(LOG_TAG, "Is Ongoing Push Notification " + isStickyNotification);
                 if(isStickyNotification){
                     notification.setOngoing(true);
                     notification.setTimeoutAfter(10*60*1000);
