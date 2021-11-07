@@ -321,7 +321,7 @@ public class RNPushNotificationHelper {
             Bundle dataBundle = bundle.getBundle("data");
             Log.v(LOG_TAG, "Data Bundle is " + dataBundle);
             if(dataBundle != null){
-                boolean isStickyNotification = dataBundle.getString("ongoing", "false").equalsIgnoreCase("true");
+                boolean isStickyNotification = dataBundle.getString("ongoingDocon", "false").equalsIgnoreCase("true");
                 Log.v(LOG_TAG, "Is Ongoing Push Notification " + isStickyNotification);
                 if(isStickyNotification){
                     notification.setOngoing(true);
