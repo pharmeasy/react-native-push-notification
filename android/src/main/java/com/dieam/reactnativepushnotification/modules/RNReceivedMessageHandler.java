@@ -100,7 +100,7 @@ public class RNReceivedMessageHandler {
             }
         }
 
-        if(notificationData.containsKey("ongoingDocon")) {
+        if(notificationData.containsKey("isSticky")) {
             bundle.putString("message", notificationData.get("body"));
             bundle.putString("title", notificationData.get("title"));
         }
