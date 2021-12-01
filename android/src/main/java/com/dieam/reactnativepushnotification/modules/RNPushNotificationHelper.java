@@ -325,7 +325,8 @@ public class RNPushNotificationHelper {
                 Log.v(LOG_TAG, "Is Ongoing Push Notification " + isStickyNotification);
                 if(isStickyNotification){
                     notification.setOngoing(true);
-                    notification.setTimeoutAfter(10*60*1000);
+                    notification.setTimeoutAfter(5*60*1000);
+                    notification.setAutoCancel(false);
                 }
             }
             
